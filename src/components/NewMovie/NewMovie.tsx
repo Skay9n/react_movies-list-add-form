@@ -6,7 +6,6 @@ export const NewMovie = ({ onAdd }: { onAdd: (movie: Movie) => void }) => {
   // Increase the count after successful form submission
   // to reset touched status of all the `Field`s
 
-  const [count, setCount] = useState(0);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imgUrl, setImgUrl] = useState('');
@@ -16,7 +15,6 @@ export const NewMovie = ({ onAdd }: { onAdd: (movie: Movie) => void }) => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     onAdd({ title, description, imgUrl, imdbUrl, imdbId });
-    setCount(c => c + 1);
   };
 
   const isFormValid = [title, imgUrl, imdbUrl, imdbId].every(
@@ -24,7 +22,7 @@ export const NewMovie = ({ onAdd }: { onAdd: (movie: Movie) => void }) => {
   );
 
   return (
-    <form className="NewMovie" key={count} onSubmit={handleSubmit}>
+    <form className="NewMovie" onSubmit={handleSubmit}>
       <h2 className="title">Add a movie</h2>
 
       <TextField
